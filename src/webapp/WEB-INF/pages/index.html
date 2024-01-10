@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of people</title>
+</head>
+<table border="2" style="width:400px">
+    <caption>All people</caption>
+    <colgroup>
+        <col style="background:Khaki">
+        <col span="3" style="background-color:LightCyan">
+    </colgroup>
+    <tr>
+        <th align="center">id</th>
+        <th align="center">Name</th>
+        <th align="center">Last Name</th>
+        <th align="center">Age</th>
+    </tr>
+    <tr th:each="user : ${people}">
+        <td align="center">
+            <a th:href="@{'/show?id=' + ${user.getId()}}" th:text="${user.getId()}">User Id</a>
+        </td>
+        <td align="center" th:text="${user.getName()}"></td>
+        <td align="center" th:text="${user.getLastname()}"></td>
+        <td align="center" th:text="${user.getAge()}"></td>
+        <td>
+            <form th:action="@{/edit}" th:method="GET">
+                <input type="hidden" name="id" th:value="${user.getId()}">
+                <button type="submit">Change</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/delete}" th:method="DELETE">
+                <input type="hidden" name="id" th:value="${user.getId()}">
+                <button type="submit">DELETE</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<form th:action="@{/new}" th:method="GET">
+    <button type="submit">Add user</button>
+</form>
+</body>
+</html>
