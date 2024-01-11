@@ -31,7 +31,7 @@
             </form>
         </td>
         <td>
-            <form th:action="@{/delete}" th:method="DELETE">
+            <form th:action="@{/delete}" th:method="GET">
                 <input type="hidden" name="id" th:value="${user.getId()}">
                 <button type="submit">DELETE</button>
             </form>

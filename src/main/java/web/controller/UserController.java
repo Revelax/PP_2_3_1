@@ -46,7 +46,7 @@ public class UserController {
         return "show";
     }
 
-    @DeleteMapping("/delete")
+    @GetMapping("/delete")
     public String deleteUser(@RequestParam("id") int id) {
         userService.deleteUserById(id);
         return "redirect:/";
@@ -58,7 +58,7 @@ public class UserController {
         return "edit";
     }
 
-    @PatchMapping("/edit")
+    @PostMapping("/edit")
     public String update(@RequestParam("id") int id,
                          @ModelAttribute("person") @Valid User newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
