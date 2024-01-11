@@ -9,12 +9,15 @@
     <br>
     <label for="name">Input name</label>
     <input type="text" th:field="*{name}" id="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Errors</div>
     <br>
     <label for="lastname">Input last name</label>
     <input type="text" th:field="*{lastname}" id="lastname">
+    <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Errors</div>
     <br>
     <label for="age">Input age</label>
     <input type="text" th:field="*{age}" id="age">
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Errors</div>
     <br>
     <input type="submit" value="Change">
 </form>
