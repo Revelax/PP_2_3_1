@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -42,11 +42,11 @@ public class UserController {
 
     @GetMapping("/show")
     public String show(@RequestParam("id") int id, Model model) {
-        model.addAttribute("person", userService.listUserId(id));
+        model.addAttribute("person", userService.getUserById(id));
         return "show";
     }
 
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public String deleteUser(@RequestParam("id") int id) {
         userService.deleteUserById(id);
         return "redirect:/";
@@ -54,7 +54,7 @@ public class UserController {
 
     @GetMapping("/edit")
     public String editUser(@RequestParam("id") int id, Model model) {
-        model.addAttribute("person", userService.listUserId(id));
+        model.addAttribute("person", userService.getUserById(id));
         return "edit";
     }
 

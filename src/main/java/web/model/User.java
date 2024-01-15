@@ -29,6 +29,13 @@ public class User {
     @Min(value = 0, message = "Age should be greater than 0!")
     @Column(name = "age")
     private int age;
+    public User() {
+    }
+    public User(String name, String lastname, int age) {
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
@@ -58,13 +65,4 @@ public class User {
         this.age = age;
     }
 
-
-    public User(String name, String lastname, int age) {
-        this.name = name;
-        this.lastname = lastname;
-        this.age = age;
-    }
-
-    public User() {
-    }
 }
